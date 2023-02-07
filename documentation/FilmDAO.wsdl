@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ax23="http://model/xsd" xmlns:ns="http://model" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://sql.java/xsd" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" targetNamespace="http://model">
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sql.java/xsd">
+            <xs:complexType name="SQLException">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="SQLState" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="errorCode" type="xs:int"/>
+                    <xs:element minOccurs="0" name="nextException" nillable="true" type="ax21:SQLException"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model/xsd">
+            <xs:complexType name="Film">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="director" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="review" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="stars" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="title" nillable="true" type="xs:string"/>
+                    <xs:element minOccurs="0" name="year" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="FilmDAO">
+                <xs:sequence/>
+            </xs:complexType>
+        </xs:schema>
+        <xs:schema xmlns:ax22="http://sql.java/xsd" xmlns:ax24="http://model/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://model">
+            <xs:import namespace="http://sql.java/xsd"/>
+            <xs:import namespace="http://model/xsd"/>
+            <xs:element name="FilmDAOSQLException">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="SQLException" nillable="true" type="ax22:SQLException"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateFilm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="updatedFilm" nillable="true" type="ax24:Film"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="updateFilmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="searchFilm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="search" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="searchFilmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:Film"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="insertFilm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="newFilm" nillable="true" type="ax24:Film"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="insertFilmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInstance">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getInstanceResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax24:FilmDAO"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilmByID">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="getFilmByIDResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="ax24:Film"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteFilm">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="id" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="deleteFilmResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="return" type="xs:int"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="allFilms">
+                <xs:complexType>
+                    <xs:sequence/>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="allFilmsResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element maxOccurs="unbounded" minOccurs="0" name="return" nillable="true" type="ax24:Film"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="allFilmsRequest">
+        <wsdl:part name="parameters" element="ns:allFilms"/>
+    </wsdl:message>
+    <wsdl:message name="allFilmsResponse">
+        <wsdl:part name="parameters" element="ns:allFilmsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="FilmDAOSQLException">
+        <wsdl:part name="parameters" element="ns:FilmDAOSQLException"/>
+    </wsdl:message>
+    <wsdl:message name="getFilmByIDRequest">
+        <wsdl:part name="parameters" element="ns:getFilmByID"/>
+    </wsdl:message>
+    <wsdl:message name="getFilmByIDResponse">
+        <wsdl:part name="parameters" element="ns:getFilmByIDResponse"/>
+    </wsdl:message>
+    <wsdl:message name="deleteFilmRequest">
+        <wsdl:part name="parameters" element="ns:deleteFilm"/>
+    </wsdl:message>
+    <wsdl:message name="deleteFilmResponse">
+        <wsdl:part name="parameters" element="ns:deleteFilmResponse"/>
+    </wsdl:message>
+    <wsdl:message name="updateFilmRequest">
+        <wsdl:part name="parameters" element="ns:updateFilm"/>
+    </wsdl:message>
+    <wsdl:message name="updateFilmResponse">
+        <wsdl:part name="parameters" element="ns:updateFilmResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getInstanceRequest">
+        <wsdl:part name="parameters" element="ns:getInstance"/>
+    </wsdl:message>
+    <wsdl:message name="getInstanceResponse">
+        <wsdl:part name="parameters" element="ns:getInstanceResponse"/>
+    </wsdl:message>
+    <wsdl:message name="searchFilmRequest">
+        <wsdl:part name="parameters" element="ns:searchFilm"/>
+    </wsdl:message>
+    <wsdl:message name="searchFilmResponse">
+        <wsdl:part name="parameters" element="ns:searchFilmResponse"/>
+    </wsdl:message>
+    <wsdl:message name="insertFilmRequest">
+        <wsdl:part name="parameters" element="ns:insertFilm"/>
+    </wsdl:message>
+    <wsdl:message name="insertFilmResponse">
+        <wsdl:part name="parameters" element="ns:insertFilmResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="FilmDAOPortType">
+        <wsdl:operation name="allFilms">
+            <wsdl:input message="ns:allFilmsRequest" wsaw:Action="urn:allFilms"/>
+            <wsdl:output message="ns:allFilmsResponse" wsaw:Action="urn:allFilmsResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:allFilmsFilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getFilmByID">
+            <wsdl:input message="ns:getFilmByIDRequest" wsaw:Action="urn:getFilmByID"/>
+            <wsdl:output message="ns:getFilmByIDResponse" wsaw:Action="urn:getFilmByIDResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:getFilmByIDFilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFilm">
+            <wsdl:input message="ns:deleteFilmRequest" wsaw:Action="urn:deleteFilm"/>
+            <wsdl:output message="ns:deleteFilmResponse" wsaw:Action="urn:deleteFilmResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:deleteFilmFilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateFilm">
+            <wsdl:input message="ns:updateFilmRequest" wsaw:Action="urn:updateFilm"/>
+            <wsdl:output message="ns:updateFilmResponse" wsaw:Action="urn:updateFilmResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:updateFilmFilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstance">
+            <wsdl:input message="ns:getInstanceRequest" wsaw:Action="urn:getInstance"/>
+            <wsdl:output message="ns:getInstanceResponse" wsaw:Action="urn:getInstanceResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="searchFilm">
+            <wsdl:input message="ns:searchFilmRequest" wsaw:Action="urn:searchFilm"/>
+            <wsdl:output message="ns:searchFilmResponse" wsaw:Action="urn:searchFilmResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:searchFilmFilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="insertFilm">
+            <wsdl:input message="ns:insertFilmRequest" wsaw:Action="urn:insertFilm"/>
+            <wsdl:output message="ns:insertFilmResponse" wsaw:Action="urn:insertFilmResponse"/>
+            <wsdl:fault message="ns:FilmDAOSQLException" name="FilmDAOSQLException" wsaw:Action="urn:insertFilmFilmDAOSQLException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="FilmDAOSoap11Binding" type="ns:FilmDAOPortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="allFilms">
+            <soap:operation soapAction="urn:allFilms" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getFilmByID">
+            <soap:operation soapAction="urn:getFilmByID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFilm">
+            <soap:operation soapAction="urn:deleteFilm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateFilm">
+            <soap:operation soapAction="urn:updateFilm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstance">
+            <soap:operation soapAction="urn:getInstance" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchFilm">
+            <soap:operation soapAction="urn:searchFilm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="insertFilm">
+            <soap:operation soapAction="urn:insertFilm" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FilmDAOSoap12Binding" type="ns:FilmDAOPortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="allFilms">
+            <soap12:operation soapAction="urn:allFilms" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getFilmByID">
+            <soap12:operation soapAction="urn:getFilmByID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFilm">
+            <soap12:operation soapAction="urn:deleteFilm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="updateFilm">
+            <soap12:operation soapAction="urn:updateFilm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getInstance">
+            <soap12:operation soapAction="urn:getInstance" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchFilm">
+            <soap12:operation soapAction="urn:searchFilm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="insertFilm">
+            <soap12:operation soapAction="urn:insertFilm" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException">
+                <soap12:fault use="literal" name="FilmDAOSQLException"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="FilmDAOHttpBinding" type="ns:FilmDAOPortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="allFilms">
+            <http:operation location="allFilms"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getFilmByID">
+            <http:operation location="getFilmByID"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="deleteFilm">
+            <http:operation location="deleteFilm"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateFilm">
+            <http:operation location="updateFilm"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getInstance">
+            <http:operation location="getInstance"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="searchFilm">
+            <http:operation location="searchFilm"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+        <wsdl:operation name="insertFilm">
+            <http:operation location="insertFilm"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+            <wsdl:fault name="FilmDAOSQLException"/>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="FilmDAO">
+        <wsdl:port name="FilmDAOHttpSoap11Endpoint" binding="ns:FilmDAOSoap11Binding">
+            <soap:address location="http://localhost:8080/services/model/FilmDAO"/>
+        </wsdl:port>
+        <wsdl:port name="FilmDAOHttpSoap12Endpoint" binding="ns:FilmDAOSoap12Binding">
+            <soap12:address location="http://localhost:8080/services/model/FilmDAO"/>
+        </wsdl:port>
+        <wsdl:port name="FilmDAOHttpEndpoint" binding="ns:FilmDAOHttpBinding">
+            <http:address location="http://localhost:8080/services/model/FilmDAO"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+    <display-name>enterprise</display-name>
+    <servlet>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>controller</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Jersey REST Service</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAllFilms</servlet-name>
+        <servlet-class>controller.GetAllFilms</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllFilms</servlet-name>
+        <url-pattern>/servlets/getallfilms</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchFilm</servlet-name>
+        <servlet-class>controller.SearchFilm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchFilm</servlet-name>
+        <url-pattern>/servlets/searchfilm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>InsertFilm</servlet-name>
+        <servlet-class>controller.InsertFilm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertFilm</servlet-name>
+        <url-pattern>/servlets/insertfilm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateFilm</servlet-name>
+        <servlet-class>controller.UpdateFilm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateFilm</servlet-name>
+        <url-pattern>/servlets/updatefilm</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>DeleteFilm</servlet-name>
+        <servlet-class>controller.DeleteFilm</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteFilm</servlet-name>
+        <url-pattern>/servlets/deletefilm</url-pattern>
+    </servlet-mapping>
+</web-app>

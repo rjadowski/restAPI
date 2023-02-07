@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<application xmlns="http://wadl.dev.java.net/2009/02">
+    <doc xmlns:jersey="http://jersey.java.net/" jersey:generatedBy="Jersey: 1.11 12/09/2011 10:27 AM"/>
+    <resources base="http://localhost:8080">
+        <resource path="/rest">
+            <resource path="/films">
+                <resource path="/delete">
+                    <method id="deleteFilm" name="DELETE">
+                        <request>
+                            <representation mediaType="application/x-www-form-urlencoded">
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="id" style="query"
+                                       type="xs:int"/>
+                            </representation>
+                        </request>
+                        <response>
+                            <representation mediaType="text/plain"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/plaintext">
+                    <method id="getFilmsText" name="GET">
+                        <response>
+                            <representation mediaType="text/plain"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/plaintext/search={search}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="search" style="template" type="xs:string"/>
+                    <method id="searchFilmsText" name="GET">
+                        <response>
+                            <representation mediaType="text/plain"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/insert">
+                    <method id="insertFilm" name="POST">
+                        <request>
+                            <representation mediaType="application/x-www-form-urlencoded">
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="id" style="query"
+                                       type="xs:int"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="title" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="year" style="query"
+                                       type="xs:int"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="director" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="stars" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="review" style="query"
+                                       type="xs:string"/>
+                            </representation>
+                        </request>
+                        <response>
+                            <representation mediaType="text/plain"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/xml">
+                    <method id="getFilmsXML" name="GET">
+                        <response>
+                            <representation mediaType="application/xml"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/xml/search={search}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="search" style="template" type="xs:string"/>
+                    <method id="searchFilmsXML" name="GET">
+                        <response>
+                            <representation mediaType="text/xml"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/json">
+                    <method id="getFilmsJSON" name="GET">
+                        <response>
+                            <representation mediaType="application/json"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/update">
+                    <method id="updateFilm" name="PUT">
+                        <request>
+                            <representation mediaType="application/x-www-form-urlencoded">
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="id" style="query"
+                                       type="xs:int"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="title" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="year" style="query"
+                                       type="xs:int"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="director" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="stars" style="query"
+                                       type="xs:string"/>
+                                <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="review" style="query"
+                                       type="xs:string"/>
+                            </representation>
+                        </request>
+                        <response>
+                            <representation mediaType="text/plain"/>
+                        </response>
+                    </method>
+                </resource>
+                <resource path="/json/search={search}">
+                    <param xmlns:xs="http://www.w3.org/2001/XMLSchema" name="search" style="template" type="xs:string"/>
+                    <method id="searchFilmsJSON" name="GET">
+                        <response>
+                            <representation mediaType="application/json"/>
+                        </response>
+                    </method>
+                </resource>
+            </resource>
+        </resource>
+    </resources>
+</application>

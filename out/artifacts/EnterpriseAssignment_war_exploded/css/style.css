@@ -1,0 +1,104 @@
+* {
+    font-family: Calibri, sans-serif;
+}
+
+#table table, tr, th, td {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 2px black;
+    border-collapse: collapse;
+    padding: 3px 6px;
+    vertical-align: middle;
+}
+
+#insert-table table, tr, th, td {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 2px black;
+    border-collapse: collapse;
+    padding: 3px 6px;
+    vertical-align: middle;
+}
+
+#update-table table, tr, th, td {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 2px black;
+    border-collapse: collapse;
+    padding: 3px 6px;
+    vertical-align: middle;
+}
+
+#delete-table table, tr, th, td {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 2px black;
+    border-collapse: collapse;
+    padding: 3px 6px;
+    vertical-align: middle;
+}
+
+#search-table table, tr, th, td {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    border: solid 2px black;
+    border-collapse: collapse;
+    padding: 3px 6px;
+    vertical-align: middle;
+}
+
+#tablehead th {
+    font-weight: bold;
+}
+
+#tablehead tr {
+    background-color: beige;
+}
+
+#tablebody tr:nth-child(odd) {
+    background-color: azure;
+}
+
+#tablebody tr:nth-child(even) {
+    background-color: beige;
+}
+
+.json-to-table th {
+    background-color: beige;
+    font-weight: bold;
+}
+
+.json-to-table tbody tr:nth-child(odd) {
+    background-color: azure;
+}
+
+.json-to-table tbody tr:nth-child(even) {
+    background-color: beige;
+}
+
+label {
+    text-align: right;
+    display: inline-block;
+    width: 5%;
+    padding: 3px;
+    margin-right: 3px;
+}
+
+input, textarea, button {
+    width: 10%;
+}
+
+.scrollit {
+    overflow:scroll;
+    height:800px;
+}
